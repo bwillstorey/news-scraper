@@ -118,6 +118,16 @@ app.post("/articles/:id", function(req, res) {
     });
 });
 
+// Route for clearing 
+app.get("/clear", function (req, res) {
+  db.Article.deleteMany({})
+  .then(function(dbArticle){
+    console.log("documents deleted");
+    res.json("documents deleted");
+  })
+
+});
+
 // Start the server
 app.listen(PORT, function() {
   console.log("App running on port " + PORT + "!");
