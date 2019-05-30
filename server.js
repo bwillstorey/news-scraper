@@ -42,7 +42,7 @@ app.get("/scrape", function(req, res) {
     var $ = cheerio.load(response.data);
 
     // Now, we grab every h2 within an article tag, and do the following:
-    $("article div.item-info").each(function(i, element) {
+    $("article div").each(function(i, element) {
       // Save an empty result object
       var result = {};
 

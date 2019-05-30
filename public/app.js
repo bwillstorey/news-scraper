@@ -1,21 +1,29 @@
 // Grab the articles as a json
 
+$(document).ready(
+  $.ajax({
+    method: "GET",
+    url: "/scrape"
+  })
+)
+
 $(".get-headlines").on("click", () => { 
 
-  location.assign("/scrape");
-
-  $.getJSON("/articles", function(data) {
-    // For each one
-    for (var i = 0; i < data.length; i++) {
-      // Display the apropos information on the page
-      $("#articles")
-      .append("<p data-id='" + 
-        data[i]._id + "'>" + 
-        "<strong>" + data[i].title + "</strong> <br /> <br />" + 
-        data[i].description + "<br /> <br />" + 
-        data[i].link + "</p> <hr class='my-4' />");
+  $.ajax({
+    method: "GET",
+    url: "/articles"
+  }).then(function(data) {
+  // For each one
+  for (var i = 0; i < data.length; i++) {
+    // Display the apropos information on the page
+    $("#articles")
+    .append("<p data-id='" + 
+      data[i]._id + "'>" + 
+      "<strong>" + data[i].title + "</strong> <br /> <br />" + 
+      data[i].description + "<br /> <br />" + 
+      "<a href=" + data[i].link + ">View Story</a> </p> <hr class='my-4' />");
     }
-  });
+  })
 });
 
 // Whenever someone clicks a p tag
@@ -84,5 +92,10 @@ $(document).on("click", "#savenote", function() {
 });
 
 $('.clear').on("click", () => { 
-  location.assign("/clear");
+  
+  $.ajax({
+    method: "GET",
+    url: "/clear/"
+  })
+  .then(location.reload())
 });
