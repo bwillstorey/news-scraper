@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/bwillstorey/news-scraper#readme",
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.3",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
@@ -25,6 +25,7 @@
     "lodash": "^4.17.19",
     "minimist": "^1.2.5",
     "mongoose": "^5.5.11",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "mquery": "^3.2.3"
   }
 }
